@@ -277,8 +277,5 @@ document.querySelectorAll('.skill-card, .passion-card, .stat-card').forEach(el =
   observer.observe(el)
 })
 
-// Optional: jalankan hanya jika elemen #counter ada
-const counterEl = document.querySelector('#counter')
-if (counterEl) setupCounter(counterEl)
 
 setupCounter(document.querySelector('#counter'))
