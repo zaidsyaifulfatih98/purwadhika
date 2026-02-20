@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+@theme { 
+    --color-salmon:#EB4C4C;
+}
