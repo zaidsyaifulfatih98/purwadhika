@@ -7,6 +7,7 @@ import TailwindPage from './pages/tailwindcss/page.tsx';
 import UseRefPage  from './pages/react-hooks/use-ref/page.tsx';
 import UseStatePage from './pages/react-hooks/use-state/page.tsx';
 import todoPage from './pages/react-hooks/ToDo/todo.tsx';
+import useMemoPage from './pages/react-hooks/use-memo/use-memo.tsx';
 
 const router = createBrowserRouter(
   [
@@ -35,11 +36,11 @@ const router = createBrowserRouter(
       path : '/react-hooks/todo',
       Component : todoPage
     },
-    // {
-    //   path : '/react-hooks/mb',
-    //   Component : todoPage
-      
-    // }
+    {
+      path : '/react-hooks/use-memo',
+      Component : useMemoPage
+    },
+    
 
   ]
 )
