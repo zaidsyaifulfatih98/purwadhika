@@ -1,0 +1,148 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  margin: 0;
+  background: #faf9f6;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  background-color: #77100f;
+  box-shadow: 0 2px 15px rgba(70,50,15,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+}
+.logo-img {
+  height: 40px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+.nav-links li a {
+  color: #fff8e1;
+  text-decoration: none;
+  padding: 8px 0;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-links li a:hover {
+  color: #eac784;
+}
+
+/* Hero section sample */
+
+
+/* Footer styling */
+footer {
+  background: #77100f;
+  color: #ffffff;
+  margin-top: 80px;
+  padding: 55px 25px 22px;
+}
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+  margin-bottom: 30px;
+}
+.footer-section h4 {
+  color: white;
+  margin-bottom: 18px;
+  font-size: 1.2rem;
+}
+.footer-section p, .footer-section ul li {
+  color: white;
+  line-height: 1.7;
+  font-size: 0.98rem;
+}
+
+.footer-section ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.footer-section ul li {
+  margin-bottom: 9px;
+}
+.footer-section ul li a {
+  color: inherit;
+  text-decoration: none;
+  transition: color .2s;
+}
+.footer-section ul li a:hover { color: #eac784; }
+.footer-section .social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 12px;
+}
+.footer-section .social-links a {
+  background: rgba(234,199,132,0.16);
+  color: #ffeac4;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: background 0.3s, color 0.3s;
+}
+.footer-section .social-links a:hover {
+  background: #eac784;
+  color: #2d1c09;
+}
+.footer-bottom {
+  padding-top: 15px;
+  text-align: center;
+  font-size: 0.92rem;
+  border-top: 1px solid rgba(234,199,132, 0.14);
+}
+.nav-links a {
+  color: #fff !important;    /* Putih solid, hindari !important jika sudah cukup spesifik */
+  text-decoration: none;
+  padding: 8px 0;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: #eac784;   /* Kuning highlight saat hover/aktif */
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 65px;
+    background: #2d1c09;
+    flex-direction: column;
+    padding: 20px;
+    width: 220px;
+    z-index: 99;
+    box-shadow: 0 5px 20px #8c6f49dd;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+  }
+}

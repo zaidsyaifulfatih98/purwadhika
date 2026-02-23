@@ -92,6 +92,8 @@ export default function useStatePage(){
         <textarea className="border border-blue-500 rounded-md mt-4" placeholder="Masukkan impian anda"
         onChange={(event)=>onhandleTyping(event)}/>
         
+        {/* toogle */}
+        <input type="checkbox" checked="checked" className="toggle toggle-lg " />
         
         
 

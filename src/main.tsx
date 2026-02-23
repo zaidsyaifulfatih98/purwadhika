@@ -8,6 +8,8 @@ import UseRefPage  from './pages/react-hooks/use-ref/page.tsx';
 import UseStatePage from './pages/react-hooks/use-state/page.tsx';
 import todoPage from './pages/react-hooks/ToDo/todo.tsx';
 import useMemoPage from './pages/react-hooks/use-memo/use-memo.tsx';
+import crudPage from './pages/react-hooks/CRUD/CRUD.tsx';
+import Home from './pages/CompanyWebsite/page.tsx';
 
 const router = createBrowserRouter(
   [
@@ -40,7 +42,14 @@ const router = createBrowserRouter(
       path : '/react-hooks/use-memo',
       Component : useMemoPage
     },
-    
+    {
+      path : '/react-hooks/crud',
+      Component : crudPage
+    },
+    {
+      path : '/company-page',
+      Component : Home
+    },
 
   ]
 )
