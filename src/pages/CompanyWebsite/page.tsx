@@ -8,7 +8,34 @@ import produk1 from "./assets/produk1.jpg"
 import produk2 from "./assets/produk2.jpg"
 import produk3 from "./assets/produk3.jpg"
 
-// Ganti path sesuai lokasi image2, atau import image actual dari asset/public
+
+type Testimony = {
+  name: string;
+  role: string;
+  message: string;
+  avatar: string;
+};
+
+const testimonies: Testimony[] = [
+  {
+    name: "Furi R",
+    role: "Pelajar",
+    avatar: "FR",
+    message: `“ I always had good time with Anomali. Anomali brings local coffee for everyone who craving best coffee. My fav coffee bean come from Flores, and they also have much kind of beans like Jawa, Kintamani, Luwak, Toraha, Aceh Gayo, Flores and Black Pear.”`,
+  },
+  {
+    name: "Didit",
+    role: "Pegawai Swasta",
+    avatar: "D",
+    message: `“Barang sudah diterima dengan baik, packing aman. Rasa kopi mantap sesuai dengan selera. Recommend seller.”`,
+  },
+  {
+    name: "Yayak",
+    role: "Pengusaha",
+    avatar: "Y",
+    message: `“Kopinya enak dan rasanya konsisten, favorite pilihan keluarga. Lebih mantap lagi belinya pas promo 2/2 dapat harga setengah dari normal. Semoga Anomali Coffee tetap jaya dan banyak promo.”`,
+  },
+];
 const products = [
   {
     img: produk1,
@@ -26,6 +53,25 @@ const products = [
     flavor: 'Orange, Vanilla, Dark Chocolate',
   },
 ];
+
+// Komponen bintang rating
+function StarIcons({ count = 5 }: { count?: number }) {
+  return (
+    <div className="flex mb-2">
+      {Array.from({ length: count }).map((_, i) => (
+        <svg
+          key={i}
+          className="w-5 h-5 text-yellow-400"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <polygon points="10,1.5 12.59,7.12 18.68,7.63 14.05,11.97 15.18,18.02 10,14.88 4.82,18.02 5.95,11.97 1.32,7.63 7.41,7.12" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
 const Home: React.FC = () => (
   <div>
     <Navbar />
@@ -129,93 +175,42 @@ const Home: React.FC = () => (
       </div>
     </div>
   </section>
+  <section className="bg-[#FFF9F2] py-16">
+      <div className="max-w-5xl mx-auto px-4">
+        <h2 className="text-center text-4xl font-bold text-[#7b1815] mb-1 mt-4">
+          Our Testimony
+        </h2>
+        <div className="w-32 h-1 bg-[#7b1815] mx-auto mb-4 rounded"></div>
+        <p className="text-center text-gray-500 mb-8">
+          what our costumers say about our products
+        </p>
 
-    {/* Product / Service Section */}
-    <section className="products-section">
-      <div className="container">
-        <div className="section-title">
-          <h2>Produk & Menu</h2>
-          <div className="underline"></div>
-          <p>Kopi, makanan, minuman dan layanan barista profesional</p>
-        </div>
-        <div className="products-grid">
-          <div className="product-card">
-            <div className="icon">
-              <i className="fas fa-mug-hot"></i>
+        <div className="flex flex-col md:flex-row gap-5 justify-center">
+          {testimonies.map((t) => (
+            <div
+              key={t.name}
+              className="bg-white rounded-xl shadow-md px-6 py-6 flex-1 min-w-[260px] max-w-sm flex flex-col"
+            >
+              <StarIcons />
+
+              <p className="text-gray-600 italic text-[15px] mb-6">{t.message}</p>
+              <div className="flex items-center gap-3 mt-auto">
+                <div className="w-12 h-12 rounded-full bg-[#7b1815] flex items-center justify-center text-white text-xl font-bold">
+                  {t.avatar}
+                </div>
+                <div>
+                  <div className="font-bold text-[#7b1815] leading-tight">{t.name}</div>
+                  <div className="text-gray-600 text-sm">{t.role}</div>
+                </div>
+              </div>
             </div>
-            <h3>Espresso</h3>
-            <p>Kopi premium, diseduh dengan teknik modern.</p>
-          </div>
-          <div className="product-card">
-            <div className="icon">
-              <i className="fas fa-coffee"></i>
-            </div>
-            <h3>Manual Brew</h3>
-            <p>Pilihan single origin, metode pour over & french press.</p>
-          </div>
-          <div className="product-card">
-            <div className="icon">
-              <i className="fas fa-leaf"></i>
-            </div>
-            <h3>Healthy Meals</h3>
-            <p>Makanan sehat dan homemade yang cocok untuk menemani kopi.</p>
-          </div>
-          {/* Add more menu as needed */}
+          ))}
         </div>
       </div>
     </section>
 
-    {/* Testimonials */}
-    <section className="testimonial-section">
-      <div className="container">
-        <div className="section-title">
-          <h2>Testimoni Pelanggan</h2>
-          <div className="underline"></div>
-          <p>Pelanggan kami puas, berikut beberapa review mereka:</p>
-        </div>
-        <div className="testimonials-grid">
-          <div className="testimonial-card">
-            <div className="stars">
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-            </div>
-            <p className="content">
-              "Tempat nyaman, kopi nikmat. Berasa di rumah sendiri!"
-            </p>
-            <div className="author">
-              <div className="avatar">MW</div>
-              <div className="author-info">
-                <h4>Maya Wulandari</h4>
-                <p>Customer - Surabaya</p>
-              </div>
-            </div>
-          </div>
-          <div className="testimonial-card">
-            <div className="stars">
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star"></i>
-              <i className="fas fa-star-half-alt"></i>
-            </div>
-            <p className="content">
-              "Menu bervariasi, barista ramah. Favorit untuk meeting kecil!"
-            </p>
-            <div className="author">
-              <div className="avatar">RS</div>
-              <div className="author-info">
-                <h4>Rizky Saputra</h4>
-                <p>Entrepreneur - Malang</p>
-              </div>
-            </div>
-          </div>
-          {/* Tambah testimonial lain */}
-        </div>
-      </div>
-    </section>
+    
+        
 
     {/* Footer */}
     <Footer />

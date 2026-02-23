@@ -92,6 +92,10 @@ export default function TodoPage() {
         setDraggedTodoId(todoId);
     };
 
+    const handleDragEnd = () => {
+        setDraggedTodoId(null)
+    }
+
     const handleDrop = (targetTodoId: number) => {
         if (draggedTodoId === null || draggedTodoId === targetTodoId) return;
 
@@ -155,6 +159,18 @@ export default function TodoPage() {
         }
     }, [editingTodoId]);
 
+    function filterButtonClass(active: boolean): string {
+    return active
+        ? "text-blue-600 font-bold hover:text-blue-800"
+        : "hover:text-gray-700";
+    }
+
+    function sortButtonClass(active: boolean): string {
+    return active
+        ? "text-blue-600 font-bold hover:text-blue-800"
+        : "hover:text-gray-700";
+}
+
     return (
         <>
             <div
@@ -202,6 +218,7 @@ export default function TodoPage() {
                                 onDragStart={() => handleDragStart(todo.id)}
                                 onDragOver={(event) => event.preventDefault()}
                                 onDrop={() => handleDrop(todo.id)}
+                                onDragEnd={handleDragEnd}
                             >
                                 <button
                                     type="button"
@@ -266,10 +283,7 @@ export default function TodoPage() {
                         <div className="flex gap-3">
                             <button
                                 type="button"
-                                className={
-                                    filter === "all"
-                                        ? "text-blue-600 font-bold hover:text-blue-800"
-                                        : "hover:text-gray-700"
+                                className={filterButtonClass(filter === 'all')
                                 }
                                 onClick={() => setFilter("all")}
                             >
@@ -277,10 +291,7 @@ export default function TodoPage() {
                             </button>
                             <button
                                 type="button"
-                                className={
-                                    filter === "active"
-                                        ? "text-blue-600 font-bold hover:text-blue-800"
-                                        : "hover:text-gray-700"
+                                className={ filterButtonClass (filter === 'active')
                                 }
                                 onClick={() => setFilter("active")}
                             >
@@ -288,10 +299,7 @@ export default function TodoPage() {
                             </button>
                             <button
                                 type="button"
-                                className={
-                                    filter === "completed"
-                                        ? "text-blue-600 font-bold hover:text-blue-800"
-                                        : "hover:text-gray-700"
+                                className={ filterButtonClass ( filter === 'completed')
                                 }
                                 onClick={() => setFilter("completed")}
                             >
@@ -306,22 +314,14 @@ export default function TodoPage() {
                     <div className="flex gap-3 px-3 py-1 justify-end">
                         <button
                             type="button"
-                            className={
-                                sort === "newest"
-                                    ? "text-blue-600 font-bold hover:text-blue-800"
-                                    : "hover:text-gray-700"
-                            }
+                            className={ sortButtonClass (sort === 'newest')}
                             onClick={() => setSort("newest")}
                         >
                             Newest
                         </button>
                         <button
                             type="button"
-                            className={
-                                sort === "oldest"
-                                    ? "text-blue-600 font-bold hover:text-blue-800"
-                                    : "hover:text-gray-700"
-                            }
+                            className={ sortButtonClass (sort === 'oldest')}
                             onClick={() => setSort("oldest")}
                         >
                             Oldest

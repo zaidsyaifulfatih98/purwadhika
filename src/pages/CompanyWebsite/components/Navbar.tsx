@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
         id="navLinks"
         style={{ display: "flex" }}
       >
-        <Link to="/" className={location.pathname === "/" ? "active" : ""}>Home</Link>
+        <Link to="/company-page" className={location.pathname === "/company-page" ? "active" : ""}>Home</Link>
         <Link to="/about-us" className={location.pathname === "/about-us" ? "active" : ""}>About Us</Link>
         <Link to="/services" className={location.pathname === "/services" ? "active" : ""}>Products</Link>
         <Link to="/teams" className={location.pathname === "/teams" ? "active" : ""}>Teams</Link>
