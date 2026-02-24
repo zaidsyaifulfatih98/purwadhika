@@ -3,6 +3,7 @@ import type { KeyboardEvent } from "react";
 import backgroundImage from "../assets/background.jpg";
 import moonImage from "../assets/Combined Shape.png";
 import React from "react";
+import Navbar from "./Navbar";
 
 type FilterType = "all" | "active" | "completed";
 
@@ -169,15 +170,23 @@ export default function TodoPage() {
     return active
         ? "text-blue-600 font-bold hover:text-blue-800"
         : "hover:text-gray-700";
-}
+    }
+
+    
+
 
     
     return (
-        <>
+        <>  
+        <div className="relative min-h-screen">
+            <Navbar/>  
+            
             <div
-                className="absolute top-0 left-0 right-0 h-[300px] bg-cover bg-center bg-no-repeat"
+                className="absolute top-0 left-0 right-0 h-[300px] bg-cover bg-center bg-no-repeat z-0"
                 style={{ backgroundImage: `url(${backgroundImage})` }}
             ></div>
+            
+
             
             
 
@@ -335,6 +344,7 @@ export default function TodoPage() {
 
                 <p className="text-center text-gray-300 text-sm mt-12 mb-8">Drag and drop to reorder list</p>
             </div>
+        </div>
         </>
     );
 }

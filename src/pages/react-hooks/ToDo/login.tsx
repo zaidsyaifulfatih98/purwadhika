@@ -1,11 +1,19 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useAuthStore } from "../../../stores/useAuthStore"
+import { useNavigate } from "react-router-dom"
 
 export default function Login() {
-    const { login, loading, error, user } = useAuthStore()
+    const { login, loading, error, isAuthenticated } = useAuthStore()
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const navigate = useNavigate()
+    // Pindah otomatis jika sudah login
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate("/react-hooks/todo", { replace: true })
+        }
+    }, [isAuthenticated, navigate])
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
