@@ -171,6 +171,7 @@ export default function TodoPage() {
         : "hover:text-gray-700";
 }
 
+    
     return (
         <>
             <div
@@ -183,7 +184,10 @@ export default function TodoPage() {
             <div className="relative max-w-md mx-auto pt-12 px-4 min-h-screen">
                 <div className="flex items-center justify-between mb-8">
                     <h1 className="text-white text-4xl font-bold tracking-[0.5em]">TODO</h1>
-                    <img src={moonImage} alt="Bulan" className="w-6 h-6" />
+                    <button type="submit" >
+
+                        <img src={moonImage} alt="Bulan" className="w-6 h-6" />
+                    </button>
                 </div>
 
                 <div className="bg-white rounded-md shadow-md p-4 mb-6">
