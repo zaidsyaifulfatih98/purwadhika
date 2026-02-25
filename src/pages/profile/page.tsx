@@ -1,21 +1,9 @@
 import { useState } from 'react';
 import Navbar from './components/Navbar';
 import ProductsSection from './components/ProductsSection';
+import { useProductsBackendless } from './components/useProductBackendless';
 
-const products = [
-  {
-    id: 1,
-    name: 'Minyak Sunco 2L',
-    price: 40000,
-    city: 'Kab. Sidoarjo',
-  },
-  {
-    id: 2,
-    name: 'Apel Malang',
-    price: 35000,
-    city: 'Kab. Malang',
-  },
-];
+
 
 function HomePage() {
   const [totalCarts, setTotalCarts] = useState<number>(0); 
@@ -23,9 +11,14 @@ function HomePage() {
   const onHandleCarts = () => {
     setTotalCarts(totalCarts + 1)
   }
+
+  const { products, loading } = useProductsBackendless();
+
+  if (loading) return <div>Loading...</div>;
   return (
     <>
-      <Navbar totalCarts={totalCarts} />
+      <Navbar/>
+      {/* <Navbar totalCarts={totalCarts} /> */}
       <ProductsSection products={products} onHandleCarts={onHandleCarts} />
     </>
   );

@@ -13,7 +13,7 @@ import Home from './pages/CompanyWebsite/page.tsx';
 import HomePage from './pages/profile/page.tsx' ;
 import PrivateRoute from './pages/react-hooks/components/PrivateRoute.tsx';
 import Login from './pages/react-hooks/ToDo/login.tsx';
-
+import CartItems from './pages/profile/CartItems.tsx';
 
 const router = createBrowserRouter(
   [
@@ -59,16 +59,20 @@ const router = createBrowserRouter(
       Component : Home
     },
     {
+      path : '/login',
+      element : <Login/>
+    },
+    {
       path : '/tokopedia',
       Component : HomePage
     },
     {
-      path : '/login',
-      element : <Login/>
+      path : '/tokopedia/cart-item',
+      Component : CartItems
     },
-
     
-
+    
+    
 
   ]
 )

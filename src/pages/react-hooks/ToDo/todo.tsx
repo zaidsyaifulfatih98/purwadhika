@@ -185,9 +185,7 @@ export default function TodoPage() {
                 className="absolute top-0 left-0 right-0 h-[300px] bg-cover bg-center bg-no-repeat z-0"
                 style={{ backgroundImage: `url(${backgroundImage})` }}
             ></div>
-            
-
-            
+                     
             
 
             <div className="relative max-w-md mx-auto pt-12 px-4 min-h-screen">
