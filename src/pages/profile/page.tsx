@@ -15,6 +15,7 @@ function HomePage() {
   const { products, loading } = useProductsBackendless();
 
   if (loading) return <div>Loading...</div>;
+  
   return (
     <>
       <Navbar/>

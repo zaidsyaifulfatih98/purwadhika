@@ -14,7 +14,8 @@ export default function CartItems () {
         {cartItems.map(item => (
             <div key={item.id} className="flex justify-between p-8">
             <div className="flex">
-                <div className="mx-8 bg-white border h-[100px] w-[100px]">Image Preview</div>
+                <img  src={item?.imageurl} className="mx-8 bg-white border h-[100px] w-[100px]"/>
+                
                 <div>
                 <p className="font-bold">{item.name}</p>
                 <p className="text-gray-500">Rp.{item.price.toLocaleString()}</p>

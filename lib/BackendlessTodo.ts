@@ -28,7 +28,7 @@ const ambilSemuaProduk = async () => {
   try {
     const produkList = await Backendless.Data.of<Product>('Products').find();
     produkList.forEach((produk) =>
-      console.log(produk.name, produk.price, produk.city)
+      console.log(produk.text, produk.completed)
     );
   } catch (error) {
     console.error('Gagal mengambil produk:', error);
@@ -76,9 +76,18 @@ const hapusSemuaProduk = async () => {
 };
 
 // Contoh penggunaan:
-//tambahProduk({ name: 'Martabak', price: 35000 , city: 'Jakarta' });
+// tambahProduk({ text: "Complete Todo App on Frontend Mentor", completed: false });
 // updateProduk('B276AE59-88B7-4C6C-91DB-53B19422B3D1', { quantity: 4 });
 // hapusProduk('A886D8C2-E8AE-426D-819B-8C39D864545F');
-//ambilSemuaProduk();
+// ambilSemuaProduk();
 //hapusSemuaProduk();
 export default Backendless
+
+// const initialTodos: Todo[] = [
+//     { id: 1, text: "Complete online JavaScript course", completed: true },
+//     { id: 2, text: "Jog around the park 3x", completed: false },
+//     { id: 3, text: "10 minutes meditation", completed: false },
+//     { id: 4, text: "Read for 1 hour", completed: false },
+//     { id: 5, text: "Pick up groceries", completed: false },
+//     { id: 6, text: "Complete Todo App on Frontend Mentor", completed: false }
+// ];

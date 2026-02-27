@@ -12,6 +12,7 @@ interface Product {
   name: string;
   price: number;
   city: string;
+  imageurl: string;
 }
 
 // Menambah produk baru
@@ -29,7 +30,7 @@ const ambilSemuaProduk = async () => {
   try {
     const produkList = await Backendless.Data.of<Product>('Products').find();
     produkList.forEach((produk) =>
-      console.log(produk.name, produk.price, produk.city)
+      console.log(produk.name, produk.price, produk.city, produk.imageurl)
     );
   } catch (error) {
     console.error('Gagal mengambil produk:', error);
@@ -79,7 +80,9 @@ const hapusSemuaProduk = async () => {
 // Contoh penggunaan:
 //tambahProduk({ name: 'Martabak', price: 35000 , city: 'Jakarta' });
 // updateProduk('B276AE59-88B7-4C6C-91DB-53B19422B3D1', { quantity: 4 });
-// hapusProduk('A886D8C2-E8AE-426D-819B-8C39D864545F');
+// hapusProduk('78C46A1C-D740-4437-BCDD-EB551FE87FC4');
 //ambilSemuaProduk();
 //hapusSemuaProduk();
 export default Backendless
+
+

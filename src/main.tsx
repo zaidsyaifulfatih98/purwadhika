@@ -12,8 +12,15 @@ import crudPage from './pages/react-hooks/CRUD/CRUD.tsx';
 import Home from './pages/CompanyWebsite/page.tsx';
 import HomePage from './pages/profile/page.tsx' ;
 import PrivateRoute from './pages/react-hooks/components/PrivateRoute.tsx';
-import Login from './pages/react-hooks/ToDo/login.tsx';
+// import Login from './pages/react-hooks/ToDo/login.tsx';
 import CartItems from './pages/profile/CartItems.tsx';
+import RegisterPage from './pages/profile/components/RegisterPage.tsx';
+import Login from './pages/profile/components/login.tsx';
+import AdminDashboard from './pages/crudBackendless/pages/AdminDashboard.tsx';
+import BlogFeeds from './pages/crudBackendless/pages/BlogFeeds.tsx';
+import BlogDetail from './pages/crudBackendless/pages/BlogDetail.tsx';
+// import RegisterPage from './pages/registerLogin/RegisterPage.tsx';
+// import LoginPage from './pages/registerLogin/LoginPage.tsx';
 
 const router = createBrowserRouter(
   [
@@ -58,10 +65,10 @@ const router = createBrowserRouter(
       path : '/company-page',
       Component : Home
     },
-    {
-      path : '/login',
-      element : <Login/>
-    },
+    // {
+    //   path : '/login',
+    //   element : <Login/>
+    // },
     {
       path : '/tokopedia',
       Component : HomePage
@@ -70,6 +77,38 @@ const router = createBrowserRouter(
       path : '/tokopedia/cart-item',
       Component : CartItems
     },
+    {
+      path : '/tokopedia/register',
+      Component : RegisterPage
+    },
+    {
+      path : '/tokopedia/login',
+      Component : Login
+    },
+    {
+    path: "/crud/admin/dashboard",
+    element: <AdminDashboard />,
+  },
+  {
+    path: "/crud/feeds",
+    element: <BlogFeeds />,
+  },
+  {
+    path: "/crud/feeds/:id",
+    element: <BlogDetail />,
+  },
+  {
+    path: "*",
+    element: <BlogFeeds />,
+  },
+  // {
+  //   path: "/register-login/register",
+  //   element: <RegisterPage />,
+  // },
+  // {
+  //   path: "/register-login/login",
+  //   element: <LoginPage />,
+  // },
     
     
     

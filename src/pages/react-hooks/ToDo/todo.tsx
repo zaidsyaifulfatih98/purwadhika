@@ -1,40 +1,49 @@
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState, useEffect } from "react";
 import type { KeyboardEvent } from "react";
 import backgroundImage from "../assets/background.jpg";
 import moonImage from "../assets/Combined Shape.png";
 import React from "react";
 import Navbar from "./Navbar";
+import {useTodoBackendless} from "../components/useTodoBackendless";
 
 type FilterType = "all" | "active" | "completed";
 
 type Todo = {
-    id: number;
+    id: string;
     text: string;
     completed: boolean;
 };
 
-const initialTodos: Todo[] = [
-    { id: 1, text: "Complete online JavaScript course", completed: true },
-    { id: 2, text: "Jog around the park 3x", completed: false },
-    { id: 3, text: "10 minutes meditation", completed: false },
-    { id: 4, text: "Read for 1 hour", completed: false },
-    { id: 5, text: "Pick up groceries", completed: false },
-    { id: 6, text: "Complete Todo App on Frontend Mentor", completed: false }
-];
+
 
 export default function TodoPage() {
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [newTodo, setNewTodo] = useState("");
     const [filter, setFilter] = useState<FilterType>("all");
-    const [draggedTodoId, setDraggedTodoId] = useState<number | null>(null);
-    const [todos, setTodos] = useState<Todo[]>(initialTodos);
+    const [draggedTodoId, setDraggedTodoId] = useState<string | null>(null);
+    const [todos, setTodos] = useState<Todo[]>([]);
     const [sort, setSort] = useState<"newest" | "oldest">("newest");
     const [searchTerm, setSearchTerm] = useState("");
 
     // --- Tambahan untuk edit inline ---
-    const [editingTodoId, setEditingTodoId] = useState<number | null>(null);
+    const [editingTodoId, setEditingTodoId] = useState<string | null>(null);
     const [editingValue, setEditingValue] = useState("");
     const editingInputRef = useRef<HTMLInputElement | null>(null);
+
+    const { todo , loading } = useTodoBackendless();
+    
+    
+    
+    useEffect(() => {
+        if (todo && todo.length) {
+                // Map ke struktur local (kalau perlu, tergantung field ID-nya)
+                setTodos(todo.map(p => ({
+                id: p.objectId ? p.objectId : Date.now() + Math.random(),
+                text: p.text,
+                completed: p.completed,
+            })));
+        }
+    }, [todo]);
 
     const filteredTodos = useMemo(() => {
         let result = todos;
@@ -43,9 +52,9 @@ export default function TodoPage() {
         // Sorting by sort state
         result = [...result].sort((a, b) =>
         sort === "newest"
-            ? b.id - a.id 
-            : a.id - b.id
-    );
+        ? b.id.localeCompare(a.id)
+        : a.id.localeCompare(b.id)
+);
         // Filter by search term
         if (searchTerm.trim()) {
             const keyword = searchTerm.trim().toLowerCase();
@@ -63,7 +72,7 @@ export default function TodoPage() {
         if (!trimmed) return;
 
         const todo: Todo = {
-            id: Date.now(),
+            id: Date.now().toString(),
             text: trimmed,
             completed: false
         };
@@ -77,7 +86,7 @@ export default function TodoPage() {
         if (event.key === "Enter") addTodo();
     };
 
-    const toggleTodo = (todoId: number) => {
+    const toggleTodo = (todoId: string) => {
         setTodos((prev) =>
             prev.map((todo) =>
                 todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
@@ -89,7 +98,7 @@ export default function TodoPage() {
         setTodos((prev) => prev.filter((todo) => !todo.completed));
     };
 
-    const handleDragStart = (todoId: number) => {
+    const handleDragStart = (todoId: string) => {
         setDraggedTodoId(todoId);
     };
 
@@ -97,7 +106,7 @@ export default function TodoPage() {
         setDraggedTodoId(null)
     }
 
-    const handleDrop = (targetTodoId: number) => {
+    const handleDrop = (targetTodoId: string) => {
         if (draggedTodoId === null || draggedTodoId === targetTodoId) return;
 
         setTodos((prev) => {
@@ -115,7 +124,7 @@ export default function TodoPage() {
     };
 
     // --- Edit inline logic ---
-    const handleTodoDoubleClick = (todoId: number, currentText: string) => {
+    const handleTodoDoubleClick = (todoId: string, currentText: string) => {
         setEditingTodoId(todoId);
         setEditingValue(currentText);
     };
@@ -124,7 +133,7 @@ export default function TodoPage() {
         setEditingValue(event.target.value);
     };
 
-    const handleEditInputKeyDown = (event: KeyboardEvent<HTMLInputElement>, todoId: number) => {
+    const handleEditInputKeyDown = (event: KeyboardEvent<HTMLInputElement>, todoId: string) => {
         if (event.key === "Enter") {
             const trimmed = editingValue.trim();
             if (trimmed) {
@@ -141,7 +150,7 @@ export default function TodoPage() {
         }
     };
 
-    const handleEditInputBlur = (todoId: number) => {
+    const handleEditInputBlur = (todoId: string) => {
         const trimmed = editingValue.trim();
         if (trimmed) {
             setTodos((prev) =>
@@ -173,8 +182,9 @@ export default function TodoPage() {
     }
 
     
-
-
+    
+    
+    if (loading) return <div>Loading...</div>;
     
     return (
         <>  

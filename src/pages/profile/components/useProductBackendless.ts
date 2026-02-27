@@ -6,6 +6,7 @@ export interface Product {
   name: string;
   price: number;
   city: string;
+  imageurl: string;
 }
 
 export function useProductsBackendless() {
@@ -13,7 +14,7 @@ export function useProductsBackendless() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    Backendless.Data.of<Product>('Products').find()
+    Backendless.Data.of<Product>('Products').find({ properties: ['name', 'price', 'city', 'imageurl'] })
       .then((result) => setProducts(result))
       .finally(() => setLoading(false));
   }, []);
