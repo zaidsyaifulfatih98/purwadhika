@@ -1,6 +1,8 @@
 import { useFormik } from 'formik';
 import { registerUserSchema } from '../../../pages/profile/features/register/schemas/registerUserSchema';
-import Backendless from '../../../../lib/BackendlessTokopedia';
+import Backendless, {
+  ensureTokopediaBackendless,
+} from '../../../../lib/BackendlessTokopedia';
 import { toast, ToastContainer } from 'react-toastify';
 
 type RegisterFormValues = {
@@ -16,6 +18,7 @@ export default function RegisterPage() {
     password,
   }: RegisterFormValues) => {
     try {
+      ensureTokopediaBackendless();
       await Backendless.UserService.register({ email, name, password });
 
       toast.success('Register user successfully');

@@ -1,15 +1,7 @@
 import { useEffect, useState } from 'react';
-import Backendless, {
-  ensureTokopediaBackendless,
-} from '../../../../lib/BackendlessTokopedia';
+import { ensureCompanyBackendless, ProductStore, type ProductRecord } from './lib/backendless';
 
-export interface Product {
-  objectId?: string;
-  name: string;
-  price: number;
-  city: string;
-  imageurl: string;
-}
+export type Product = ProductRecord;
 
 export function useProductsBackendless() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -21,16 +13,18 @@ export function useProductsBackendless() {
 
     const fetchProducts = async () => {
       try {
-        ensureTokopediaBackendless();
-        const result = (await Backendless.Data.of('Products').find({
-          properties: ['objectId', 'name', 'price', 'city', 'imageurl'],
+        ensureCompanyBackendless();
+        const result = (await ProductStore.find({
+          properties: ['objectId', 'name', 'price', 'imageurl'],
         })) as Product[];
+
         if (isMounted) {
           setProducts(result);
+          setError(null);
         }
       } catch (err: any) {
         if (isMounted) {
-          setError(err?.message || 'Gagal mengambil data produk dari Backendless');
+          setError(err?.message || 'Gagal mengambil produk dari Backendless');
         }
       } finally {
         if (isMounted) {

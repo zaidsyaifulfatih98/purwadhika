@@ -42,9 +42,16 @@ body {
   font-weight: 500;
   transition: color 0.3s;
 }
-.nav-links li a:hover {
-  color: #eac784;
+
+#user {
+  color: #fff8e1;
+  text-decoration: none;
+  padding: 8px 0;
+  font-weight: 500;
+  transition: color 0.3s;
 }
+
+
 
 /* Hero section sample */
 

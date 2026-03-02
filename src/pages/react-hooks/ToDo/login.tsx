@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useAuthStore } from "../../../stores/useAuthStore"
 import { useNavigate } from "react-router-dom"
 
-export default function Login() {
+export default function LoginTodo() {
     const { login, loading, error, isAuthenticated } = useAuthStore()
 
     const [email, setEmail] = useState("")

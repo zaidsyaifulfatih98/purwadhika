@@ -1,6 +1,8 @@
 import { useFormik } from 'formik';
 import { loginUserSchema } from '../../profile/features/register/schemas/loginUserSchema';
-import Backendless from '../../../../lib/BackendlessTokopedia';
+import Backendless, {
+  ensureTokopediaBackendless,
+} from '../../../../lib/BackendlessTokopedia';
 import { toast } from 'react-toastify';
 import { useAuthStore } from '../../../stores/useAuthStoreTokped';
 
@@ -15,6 +17,7 @@ export default function LoginPage() {
 
   const onHandleLoginUser = async ({ email, password }: LoginFormValues) => {
     try {
+      ensureTokopediaBackendless();
       const response: any = await Backendless.UserService.login(
         email,
         password,

@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer: React.FC = () => (
   <footer>
-    <div className="footer-content">
+    <div className="footer-content pt-0">
       <div className="footer-section">
         <h4>CoffeJiwo</h4>
         <p>
@@ -42,7 +42,7 @@ const Footer: React.FC = () => (
       </div>
     </div>
     <div className="footer-bottom">
-      <p>&copy; {new Date().getFullYear()} CoffeJiwo. All Rights Reserved.</p>
+      <p>&copy; {new Date().getFullYear()} Anomali Caffe. All Rights Reserved.</p>
     </div>
   </footer>
 );

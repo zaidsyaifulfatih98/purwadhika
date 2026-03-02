@@ -12,15 +12,23 @@ import crudPage from './pages/react-hooks/CRUD/CRUD.tsx';
 import Home from './pages/CompanyWebsite/page.tsx';
 import HomePage from './pages/profile/page.tsx' ;
 import PrivateRoute from './pages/react-hooks/components/PrivateRoute.tsx';
-// import Login from './pages/react-hooks/ToDo/login.tsx';
+// import LoginTodo from './pages/react-hooks/ToDo/login.tsx';
 import CartItems from './pages/profile/CartItems.tsx';
-import RegisterPage from './pages/profile/components/RegisterPage.tsx';
+// import RegisterPage from './pages/profile/components/RegisterPage.tsx';
 import Login from './pages/profile/components/login.tsx';
 import AdminDashboard from './pages/crudBackendless/pages/AdminDashboard.tsx';
 import BlogFeeds from './pages/crudBackendless/pages/BlogFeeds.tsx';
 import BlogDetail from './pages/crudBackendless/pages/BlogDetail.tsx';
 // import RegisterPage from './pages/registerLogin/RegisterPage.tsx';
 // import LoginPage from './pages/registerLogin/LoginPage.tsx';
+import AboutUs from './pages/CompanyWebsite/page/AboutUs.tsx';
+import ProductPageCompany from './pages/CompanyWebsite/page/Products.tsx';
+import BlogPage from './pages/CompanyWebsite/page/blog.tsx';
+import CreateBlog from './pages/CompanyWebsite/page/CreateBlog.tsx';
+import BlogDetails from './pages/CompanyWebsite/page/BlogDetails.tsx';
+import LoginPage from './pages/CompanyWebsite/page/LoginPage.tsx';
+import RegisterPage from './pages/CompanyWebsite/page/RegisterPage.tsx';
+
 
 const router = createBrowserRouter(
   [
@@ -61,13 +69,10 @@ const router = createBrowserRouter(
       path : '/react-hooks/crud',
       Component : crudPage
     },
-    {
-      path : '/company-page',
-      Component : Home
-    },
+    
     // {
-    //   path : '/login',
-    //   element : <Login/>
+    //   path : '/react-hooks/todo',
+    //   element : <LoginTodo/>
     // },
     {
       path : '/tokopedia',
@@ -109,6 +114,38 @@ const router = createBrowserRouter(
   //   path: "/register-login/login",
   //   element: <LoginPage />,
   // },
+    {
+      path : '/company-page',
+      Component : Home
+    },
+    {
+      path : '/company-page/about-us',
+      Component : AboutUs
+    },
+    {
+      path : '/company-page/products',
+      Component : ProductPageCompany
+    },
+    {
+      path : '/company-page/blog',
+      Component : BlogPage
+    },
+    {
+      path : '/company-page/create-blog',
+      Component : CreateBlog
+    },
+    {
+    path: "/company-page/blog/:id",
+    element: <BlogDetails />,
+    },
+    {
+      path : '/company-page/login',
+      Component : LoginPage
+    },
+    {
+      path : '/company-page/register',
+      Component : RegisterPage
+    },
     
     
     

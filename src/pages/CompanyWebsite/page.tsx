@@ -85,10 +85,10 @@ const Home: React.FC = () => (
         className="w-40 h-40 mb-6 rounded-lg bg-white shadow-lg object-contain"
         />
         <h1 className="text-4xl md:text-5xl font-extrabold text-red-800 mb-4">Anomali Caffee</h1>
-        <p className="tagline text-xl font-medium text-yellow-900 mb-2">
+        <p className="tagline text-xl font-bold text-yellow-900 mb-2">
         Kopi Asli Indonesia
         </p>
-        <p className="description text-base md:text-lg text-brown-800 opacity-90 mb-8">
+        <p className="description text-base md:text-lg text-brown-800 opacity-90 mb-8  font-bold">
         Nikmati pengalaman kopi terbaik bersama Anomali Caffee. Kami hadir untuk pecinta kopi Indonesia dengan cita rasa khas dan pelayanan profesional.
         </p>
         <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center">
@@ -167,7 +167,7 @@ const Home: React.FC = () => (
       {/* More Products */}
       <div className="flex justify-end mt-8">
         <a
-          href="/products"
+          href="/company-page/products"
           className="text-white text-xl font-bold hover:text-yellow-300 transition"
         >
           More Products {'>>'}
